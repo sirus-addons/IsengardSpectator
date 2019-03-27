@@ -12,43 +12,12 @@ end
 
 
 
-function ezSpectator_SpecWorker:GetData(Class, Talents)
-	if not Class or not Talents then
+function ezSpectator_SpecWorker:GetData(Class, Spec)
+	if not Class or not Spec or Spec == "0" then
 		return ''
 	end
-	
-	local Tree = {}
-	local Index, MaxTree, MaxTreeVal = 1, nil, 0
-	for Value in string.gmatch(Talents, '([^//]+)') do
-		Value = tonumber(Value)
-		if MaxTree then
-			if Value > MaxTreeVal then
-				MaxTreeVal = Value
-				--noinspection UnusedDef
-				MaxTree = Index
-			end
-		else
-			MaxTree = Index
-			MaxTreeVal = Value
-		end
-		
-		Tree[Index] = tonumber(Value)
-		Index = Index + 1
-	end
 
-	local SpecText
-	local SpecIcon = ''
-	local IsHealer = false
-
-	if MaxTreeVal < 44 then
-		SpecText = 'Гибрид'
-	else
-		if MaxTree then
-			SpecText = self.Parent.Data.ClassTreeInfo[Class][MaxTree][1]
-			SpecIcon = select(3, GetSpellInfo(self.Parent.Data.ClassTreeInfo[Class][MaxTree][2]))
-			IsHealer = self.Parent.Data.ClassTreeInfo[Class][MaxTree][3]
-		end
-	end
+    local specID, name, description, icon, roleFlag, isRecommended, specNum = GetSpecializationInfoForClassID(tonumber(Class), tonumber(Spec))
 	
-	return SpecText, SpecIcon, IsHealer
+	return name, icon, bit.band(roleFlag, S_SPECIALIZATION_ROLE_HEAL_FLAG)
 end

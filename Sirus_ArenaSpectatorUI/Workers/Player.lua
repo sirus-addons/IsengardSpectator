@@ -193,7 +193,7 @@ end
 
 
 function ezSpectator_PlayerWorker:SetCast(Spell, Time)
-	if self.SmallFrame.IsLocked then
+	if self.SmallFrame.IsLocked or not Spell or not Time then
 		return false
 	end
 

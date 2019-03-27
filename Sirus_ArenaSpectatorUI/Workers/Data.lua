@@ -402,11 +402,8 @@ function ezSpectator_DataWorker:Create()
         [47585] = self.AuraImmunitylEffect		-- Dispersion (Priest)
     }
 
+    -- Список игроков, чьи ники будут отображаться "особенно"
     self.PinkList = {
-        ['Лейсана'] = true,
-        ['Garmoniia'] = true,
-        ['Эллидия'] = true,
-        ['Spotlight'] = true
     }
 
     self.ClientLocale = GetLocale()

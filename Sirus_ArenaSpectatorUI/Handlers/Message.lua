@@ -84,7 +84,7 @@ function ezSpectator_MessageHandler:ProcessCommand(Target, Prefix, ...)
 			self.Parent.Interface.Players[Target]:Show()
 		end
 	end
-	
+
 	if Prefix == 'CHP' then
 		self.Parent.Interface.Players[Target]:SetHealth(tonumber(Value))
 	elseif Prefix == 'MHP' then
@@ -107,27 +107,27 @@ function ezSpectator_MessageHandler:ProcessCommand(Target, Prefix, ...)
 		self.Parent.Interface.Players[Target]:SetAura(...)
 	elseif Prefix == 'TRG' then
 		self.Parent.Interface.Players[Target]:SetTarget(self.Parent.Interface.Players[Value])
-	elseif Prefix == 'LEV' then
+	elseif Prefix == 'LEV' then -- I don't know
 		self.Parent.Interface.Players[Target]:SetLock(tonumber(Value))
-	elseif Prefix == 'ELA' then
+	elseif Prefix == 'ELA' then -- Сколько времени длится матч (шлётся при начале матча, после препа) так как у нас реплеи, используем как отметку начала самого боя
 		self.Parent.Interface:SetMatchElapsed(tonumber(Value))
-	elseif Prefix == 'TAL' then
+	elseif Prefix == 'TAL' then -- Установка спека игрока, шлём номер спека, наш функционал вернёт остальное
 		self.Parent.Interface.Players[Target]:SetSpec(Value)
-	elseif Prefix == 'NAM' then
+	elseif Prefix == 'NAM' then -- Имя команды
 		self.Parent.Interface:SetTeamName(TeamID, Value)
-	elseif Prefix == 'COL' then
+	elseif Prefix == 'COL' then -- Ну, цвет команды. gold или любой другой цвет
 		self.Parent.Interface:SetTeamColor(TeamID, Value)
-	elseif Prefix == 'SRC' then
+	elseif Prefix == 'SRC' then -- Общий процент ХП, нужно подумать нужно ли оно нам
 		self.Parent.Interface:SetTeamScore(TeamID, Value)
-	elseif Prefix == 'CDN' then
+	elseif Prefix == 'CDN' then -- Кд на спелл, айди + запятая + время (секунды)
 		self.Parent.Interface.Players[Target]:SetCooldown(tonumber(strsub(Value, 1, strfind(Value, ',') - 1)), tonumber(strsub(Value, strfind(Value, ',') + 1)))
-	elseif Prefix == 'STAGE' then
+	elseif Prefix == 'STAGE' then -- Стейдж турнира (TournamentStages)
 		self.Parent.Interface:SetStage(Value)
-	elseif Prefix == 'BOX' then
+	elseif Prefix == 'BOX' then -- Для турнирки, выводит надпись про количество игр, судя по всему
 		self.Parent.Interface:SetBOX(Value)
-	elseif Prefix == 'VER' then
+	elseif Prefix == 'VER' then -- Простой чек версии и окно апдейта
 		self.Parent.Interface:CheckVersion(Value)
-	elseif Prefix == 'ENB' then
+	elseif Prefix == 'ENB' then -- Включение / отключение аддона, 0 - выключен, 1 - включен, 2 - турнир
 		self.Parent.Interface:SetMode(tonumber(Value))
 	else
 		DEFAULT_CHAT_FRAME:AddMessage('Unhandled prefix: ' .. Prefix .. '. Try to update to newer version')
