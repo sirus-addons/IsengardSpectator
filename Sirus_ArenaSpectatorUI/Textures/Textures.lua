@@ -350,9 +350,19 @@ end
 
 
 
-function ezSpectator_Textures:Isengard_Logo(Frame)
-    local Texture = self:Load(Frame, 'Interface\\FrameXML\\Sirus_ArenaSpectatorUI\\Textures\\Isengard_Logo')
-    Texture:SetTexCoord(0, 1, 0, 1)
+function ezSpectator_Textures:Sirus_Logo(Frame)
+    local Texture = self:Load(Frame, 'Interface\\Sirus_LoginScreen\\Logo.blp')
+    local id = GetServerID()
+    if id == 5 then
+        id = 1
+    elseif id == 16 then
+        id = 2
+    elseif id == 9 then
+        id = 3
+    else
+        id = math.random(1, 3)
+    end
+    Texture:SetTexCoord(unpack(SHARED_SIRUS_LOGO_COORD[шв])) -- GetServerID()
     Texture:SetAllPoints(Frame)
     Frame.texture = Texture
 end

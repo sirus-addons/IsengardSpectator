@@ -461,7 +461,7 @@ end
 
 
 function ezSpectator_PlayerWorker:BindViewpoint()
-    SendChatMessage('.spectate view ' .. self.Nickname, 'GUILD')
+    SendAddonMessage("ACMSG_AR_SPECTATE_VIEW", self.Nickname, "WHISPER", UnitName("player"))
     self.Parent.Interface:ResetViewpoint()
 
     self.Parent.Interface.Viewpoint = self
