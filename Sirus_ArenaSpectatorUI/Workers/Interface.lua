@@ -93,6 +93,7 @@ function ezSpectator_InterfaceWorker:SetMode(Value)
             Player.SmallFrame.CastFrame:Hide()
         end
         self.TopFrame:Hide()
+        self.TopFrame.MatchTime = 0;
         
         self:Reset()
     else
