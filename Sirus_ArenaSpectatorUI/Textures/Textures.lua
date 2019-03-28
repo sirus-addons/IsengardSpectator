@@ -362,7 +362,7 @@ function ezSpectator_Textures:Sirus_Logo(Frame)
     else
         id = math.random(1, 3)
     end
-    Texture:SetTexCoord(unpack(SHARED_SIRUS_LOGO_COORD[шв])) -- GetServerID()
+    Texture:SetTexCoord(unpack(SHARED_SIRUS_LOGO_COORD[id])) -- GetServerID()
     Texture:SetAllPoints(Frame)
     Frame.texture = Texture
 end
